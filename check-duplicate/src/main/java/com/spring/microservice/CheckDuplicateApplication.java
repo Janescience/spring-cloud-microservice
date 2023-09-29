@@ -1,24 +1,24 @@
-package com.iphayao.discovery;
+package com.spring.microservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+// import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-
-@EnableEurekaServer
+// @EnableDiscoveryClient
 @SpringBootApplication
-public class ServiceDiscoveryApplication extends SpringBootServletInitializer {
+public class CheckDuplicateApplication extends SpringBootServletInitializer{
+
 
     public static void main(String[] args) {
-        SpringApplication.run(ServiceDiscoveryApplication.class, args);
+        SpringApplication.run(CheckDuplicateApplication.class, args);
     }
 
     @Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(ServiceDiscoveryApplication.class);
+		return builder.sources(CheckDuplicateApplication.class);
 	}
 
 }

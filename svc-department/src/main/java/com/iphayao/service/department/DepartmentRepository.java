@@ -1,9 +1,10 @@
 package com.iphayao.service.department;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface DepartmentRepository extends MongoRepository<Department, String> {
+
+public interface DepartmentRepository extends CrudRepository<Department, String> {
     List<Department> findByOrganizationId(String organizationId);
 }
