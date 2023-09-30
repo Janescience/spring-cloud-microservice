@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+ 
 <wls:weblogic-web-app
-        xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-web-app"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-web-app
-        http://xmlns.oracle.com/weblogic/weblogic-web-app/1.4/weblogic-web-app.xsd">
+    xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-web-app"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd
+    http://xmlns.oracle.com/weblogic/weblogic-web-app
+    http://xmlns.oracle.com/weblogic/weblogic-web-app/1.5/weblogic-web-app.xsd">
 
-    <wls:context-root>/api/check-duplicate</wls:context-root>
+    <wls:context-root>/gateway</wls:context-root>
     <wls:container-descriptor>
         <wls:prefer-application-packages>
             <wls:package-name>org.slf4j.*</wls:package-name>
             <wls:package-name>org.springframework.*</wls:package-name>
+
             <!-- jersey-bundle-*.jar -->
             <wls:package-name>com.sun.jersey.*</wls:package-name>
             <wls:package-name>com.sun.research.ws.wadl.*</wls:package-name>

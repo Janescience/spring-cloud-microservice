@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 9000
 
 spring:
   application:
@@ -11,12 +11,9 @@ zuul:
   prefix: /api
   ignoredServices: '*'
   routes:
-    employee-service:
-      path: /employees/**
-      stripPrefix: false
-    department-service:
-      path: /departments/**
-      stripPrefix: false
+    check-duplicate-service:
+      path: /check-duplicate/**
+      stripPrefix: true
   host:
     socketTimeoutMillis : 20000
     connectTimeoutMillis : 20000
@@ -25,10 +22,18 @@ management:
   endpoints:
     web:
       exposure:
-        include:
-          - '*'
+        include: '*'
+  endpoint:
+    routes:
+      Enabled: true
+    
 
 eureka:
+  instance:
+    appname: gateway-proxy
   client:
+    fetchRegistry: true
     service-url:
       defaultZone: http://localhost:9001/eureka
+    healthcheck:
+      enabled: true
