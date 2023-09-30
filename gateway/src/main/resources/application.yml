@@ -6,10 +6,11 @@ spring:
     name: gateway-proxy
   zipkin:
     baseUrl : http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
     
 zuul:
-  prefix: /api
-  ignoredServices: '*'
   routes:
     check-duplicate-service:
       path: /check-duplicate/**
