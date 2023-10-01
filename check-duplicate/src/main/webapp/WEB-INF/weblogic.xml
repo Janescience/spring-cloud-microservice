@@ -5,27 +5,22 @@
         xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-web-app
         http://xmlns.oracle.com/weblogic/weblogic-web-app/1.4/weblogic-web-app.xsd">
 
-    <wls:context-root>/</wls:context-root>
+    <wls:context-root>/duplicate</wls:context-root>
     <wls:container-descriptor>
         <wls:prefer-application-packages>
             <wls:package-name>org.slf4j.*</wls:package-name>
             <wls:package-name>org.springframework.*</wls:package-name>
-            <!-- jersey-bundle-*.jar -->
+
             <wls:package-name>com.sun.jersey.*</wls:package-name>
             <wls:package-name>com.sun.research.ws.wadl.*</wls:package-name>
             <wls:package-name>com.sun.ws.rs.ext.*</wls:package-name>
 
-            <!-- Jackson-*.jar -->
             <wls:package-name>org.codehaus.jackson.*</wls:package-name>
- 
-            <!-- jettison-*.jar -->
             <wls:package-name>org.codehaus.jettison.*</wls:package-name>
- 
-            <!-- jsr311*.jar -->
+
             <wls:package-name>javax.ws.rs.*</wls:package-name>
- 
-            <!-- asm.jar -->
             <wls:package-name>org.objectweb.asm.*</wls:package-name>
+
         </wls:prefer-application-packages>
     </wls:container-descriptor>
 
