@@ -21,7 +21,8 @@
 
             <!-- Jackson-*.jar -->
             <wls:package-name>org.codehaus.jackson.*</wls:package-name>
- 
+            <wls:package-name>com.fasterxml.jackson.*</wls:package-name>
+
             <!-- jettison-*.jar -->
             <wls:package-name>org.codehaus.jettison.*</wls:package-name>
  
