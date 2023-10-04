@@ -13,6 +13,8 @@
 
     <modules>
         <module>svc-employee</module>
+        <module>check-duplicate</module>
+        <module>common-validate</module>
         <module>svc-department</module>
         <module>svc-organization</module>
         <module>discovery</module>
