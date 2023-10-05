@@ -76,130 +76,130 @@ public class PersonProfile {
 	private Date lastCompareDate;
 	
 	@Column(name = "FIRSTNAMETH")
-	private String FIRSTNAMETH;
+	private String firstnameTH;
 	
 	@Column(name = "MIDDLENAMETH")
-	private String MIDDLENAMETH;
+	private String middlenameTh;
 	
 	@Column(name = "LASTNAMETH")
-	private String LASTNAMETH;
+	private String lastnameTh;
 	
 	@Column(name = "PERSONFIRSTNAME")
-	private String PERSONFIRSTNAME;
+	private String persomFirstname;
 	
 	@Column(name = "PERSONMIDDLENAME")
-	private String PERSONMIDDLENAME;
+	private String personMiddlename;
 	
 	@Column(name = "PERSONLASTNAME")
-	private String PERSONLASTNAME;
+	private String personLastname;
 	
 	@Column(name = "TITLETH")
-	private String TITLETH;
+	private String titleTh;
 	
 	@Column(name = "PERSONPRENAMEADJUNCT")
-	private String PERSONPRENAMEADJUNCT;
+	private String personPrenameAdjunct;
 	
 	@Column(name = "DATEOFBIRTH")
-	private Date DATEOFBIRTH;
+	private Date dateOfVirth;
 	
 	@Column(name = "NATIONALITY")
-	private String NATIONALITY;
+	private String nationlity;
 	
 	@Column(name = "RESIDENTIALTYPE")
-	private String RESIDENTIALTYPE;
+	private String residentialType;
 	
 	@Column(name = "COUNTRYOFMAINRESIDENCE")
-	private String COUNTRYOFMAINRESIDENCE;
+	private String countryOfMainResidence;
 	
 	@Column(name = "GENDER")
-	private String GENDER;
+	private String gender;
 	
 	@Column(name = "MARITALSTATUS")
-	private String MARITALSTATUS;
+	private String maritalStatus;
 	
 	@Column(name = "HIGHESTEDUCATION")
-	private String HIGHESTEDUCATION;
+	private String highestEducation;
 	
 	@Column(name = "ROYALFAMILYFLAG")
-	private String ROYALFAMILYFLAG;
+	private String royalFamilyFlag;
 	
 	@Column(name = "BOTIPITYPE")
-	private String BOTIPITYPE;
+	private String botIPIType;
 	
 	@Column(name = "DEATHDATE")
-	private Date DEATHDATE;
+	private Date deathDate;
 	
 	@Column(name = "CUSTOMERPREFERREDLANGUAGECD")
-	private String CUSTOMERPREFERREDLANGUAGECD;
+	private String customerPreferredLanguageCD;
 	
 	@Column(name = "NOLASTNAMEFLAG")
-	private String NOLASTNAMEFLAG;
+	private String noLastnameFlag;
 	
 	@Column(name = "CUSTOMERSTATUS")
-	private String CUSTOMERSTATUS;
+	private String customerStatus;
 	
 	@Column(name = "OVSCMF")
 	private String OVSCMF;
 	
 	@Column(name = "CUSTOMERCLASSIFICATION")
-	private String CUSTOMERCLASSIFICATION;
+	private String customerClassification;
 	
 	@Column(name = "GUARANTORFLAG")
-	private String GUARANTORFLAG;
+	private String guarantorFlag;
 	
 	@Column(name = "COLLATERALOWNERFLAG")
-	private String COLLATERALOWNERFLAG;
+	private String collateralOwnerFlag;
 	
 	@Column(name = "RELATEDPARTYFLAG")
-	private String RELATEDPARTYFLAG;
+	private String relatedPartyFlag;
 	
 	@Column(name = "BAYORSUBSIDIARYCUSTOMER")
-	private String BAYORSUBSIDIARYCUSTOMER;
+	private String bayOrSubsidiaryCustomer;
 	
 	@Column(name = "SUPPRESSFLAG")
-	private String SUPPRESSFLAG;
+	private String suppressFlag;
 	
 	@Column(name = "CUSTOMERSEGMENT")
-	private String CUSTOMERSEGMENT;
+	private String customerSegment;
 	
 	@Column(name = "SUBSIDIARYCODEOFCUSTOMERINITIATION")
-	private String SUBSIDIARYCODEOFCUSTOMERINITIATION;
+	private String subsidiaryCodeOfCustomerInitiation;
 	
 	@Column(name = "KRUNGSRIVIPTYPE")
-	private String KRUNGSRIVIPTYPE;
+	private String krungsriVIPType;
 	
 	@Column(name = "MASSSUBSEGMENT")
-	private String MASSSUBSEGMENT;
+	private String massSubSegment;
 	
 	@Column(name = "DUALSEGMENT")
-	private String DUALSEGMENT;
+	private String dualSegment;
 	
 	@Column(name = "PAYROLLFLAG")
-	private String PAYROLLFLAG;
+	private String payrollFlag;
 	
 	@Column(name = "PARTYTYPE")
-	private String PARTYTYPE;
+	private String partyType;
 	
 	@Column(name = "CUSTOMERTYPE")
-	private String CUSTOMERTYPE;
+	private String customerType;
 	
 	@Column(name = "NOOFACTIVEPRODUCTHOLDING")
-	private BigDecimal NOOFACTIVEPRODUCTHOLDING;
+	private BigDecimal noOfActiveProductHolding;
 	
 	@Column(name = "NOOFACTIVESERVICEUSAGE")
-	private BigDecimal NOOFACTIVESERVICEUSAGE;
+	private BigDecimal noOfActiveServiceUsage;
 	
 	@Column(name = "RELATEDPARTYIDENTIFER")
-	private String RELATEDPARTYIDENTIFER;
+	private String relatedPartyIdentifer;
 	
 	@Column(name = "JGZZFISCALCODE")
 	private String JGZZFISCALCODE;
 	
 	@Column(name = "RESPONSIBLEBRANCHCODE")
-	private String RESPONSIBLEBRANCHCODE;
+	private String responseibleBranchCode;
 	
 	@Column(name = "RESPONSIBLEDEPARTMENTCODE")
-	private String RESPONSIBLEDEPARTMENTCODE;
+	private String responseibledPartmentCode;
 	
 	@Column(name = "CIF_NO")
 	private String CIF_NO;
@@ -208,85 +208,85 @@ public class PersonProfile {
 	private String CIS_NO;
 	
 	@Column(name = "CREATEDBYUSERID")
-	private String CREATEDBYUSERID;
+	private String createdByUserId;
 	
 	@Column(name = "CREATEDBYEMPLOYEECUSTOMER")
-	private String CREATEDBYEMPLOYEECUSTOMER;
+	private String createdByEmployeeCustomer;
 	
 	@Column(name = "CREATEDATSYSTEMID")
-	private String CREATEDATSYSTEMID;
+	private String createdAtSystemID;
 	
 	@Column(name = "CREATEDATBRANCHDEPARTMENTID")
-	private String CREATEDATBRANCHDEPARTMENTID;
+	private String createAtBranchDepartmentId;
 	
 	@Column(name = "LASTUPDATEDBYUSERID")
-	private String LASTUPDATEDBYUSERID;
+	private String lastUpdatedByUserId;
 	
 	@Column(name = "LASTUPDATEDBYEMPLOYEECUSTOMER")
-	private String LASTUPDATEDBYEMPLOYEECUSTOMER;
+	private String lastUpdatedByEmployeeCustomer;
 	
 	@Column(name = "LASTUPDATEDATSYSTEMID")
-	private String LASTUPDATEDATSYSTEMID;
+	private String lastUpdateDataSystemId;
 	
 	@Column(name = "LASTUPDATEDATBRANCHDEPARTMENTID")
-	private String LASTUPDATEDATBRANCHDEPARTMENTID;
+	private String lastUpdatedAtBranchDepartmentId;
 	
 	@Column(name = "CREATED_DT")
-	private Timestamp CREATED_DT;
+	private Timestamp createdDt;
 	
 	@Column(name = "UPDATED_BY")
-	private String UPDATED_BY;
+	private String updateBy;
 	
 	@Column(name = "UPDATED_DT")
-	private Timestamp UPDATED_DT;
+	private Timestamp updatedDt;
 	
 	@Column(name = "SERVER_NAME")
-	private String SERVER_NAME;
+	private String serverName;
 	
 	@Column(name = "SYSTEM_NAME")
-	private String SYSTEM_NAME;
+	private String systemName;
 	
 	@Column(name = "SALESPROFILETYPE")
-	private String SALESPROFILETYPE;
+	private String sakesProfileType;
 	
 	@Column(name = "RECORDNAME")
-	private String RECORDNAME;
+	private String recordName;
 	
 	@Column(name = "INFORMEDINDIVIDUALMONTHLYINCOMERANGE")
-	private String INFORMEDINDIVIDUALMONTHLYINCOMERANGE;
+	private String informedIndividualMonthlyIncomeRange;
 	
 	@Column(name = "VERIFIEDINDIVIDUALMONTHLYINCOMERANGE")
-	private String VERIFIEDINDIVIDUALMONTHLYINCOMERANGE;
+	private String verifiedIndividualMonthlyIncomeRange;
 	
 	@Column(name = "COUNTRYSOURCEOFINCOME")
-	private String COUNTRYSOURCEOFINCOME;
+	private String countrySourceOfIncome;
 	
 	@Column(name = "FULLNAMETH")
-	private String FULLNAMETH;
+	private String fullnameTh;
 	
 	@Column(name = "FULLNAMEEN")
-	private String FULLNAMEEN;
+	private String fullnameEn;
 	
 	@Column(name = "ADDEDDATE")
-	private Timestamp ADDEDDATE;
+	private Timestamp addedDate;
 	
 	@Column(name = "LEGACYFLAGDELETEDATE")
-	private Date LEGACYFLAGDELETEDATE;
+	private Date legacyFlagDeleteDate;
 
 	@Column(name = "SOURCE_SYSTEM")
-	private String SOURCE_SYSTEM;
+	private String sourceSystem;
 	
 	@Column(name = "DATA_DOMAIN")
-	private String DATA_DOMAIN;
+	private String dataDomain;
 	
 	@Column(name = "TBL_STATUS")
-	private String TBL_STATUS;
+	private String tblStatus;
 	
 	@Column(name = "CREATED_BY")
-	private String CREATED_BY;
+	private String created_By;
 
 	@Column(name = "VER_NO")
-	private BigDecimal VER_NO;
+	private BigDecimal verNo;
 	
 	public PersonProfile() {
 		
