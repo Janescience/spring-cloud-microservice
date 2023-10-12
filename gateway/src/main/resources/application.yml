@@ -14,49 +14,55 @@ eureka:
     registerWithEureka: true
   instance:
     appname: API-GATEWAY
+    preferIpAddress: true
 
-zuul:
-  routes:
-   check-duplicate-service:
-     path: /check-duplicate/**
-     stripPrefix: true
-  host:
-    connect-timeout-millis: 20000
-    socket-timeout-millis: 30000
+# zuul:
+#   routes:
+#    check-duplicate-service:
+#      path: /check-duplicate/**
+#      stripPrefix: false
 
-ribbon:
-  eureka:
-    enabled: false
-  ReadTimeout: 60000
-  ConnectTimeout: 10000
+# ribbon:
+#   eureka:
+#     enabled: false
+#   ReadTimeout: 60000
+#   ConnectTimeout: 10000
 
-check-duplicate-service:
-  ribbon:
-    listOfServers: localhost:8080
+# check-duplicate-service:
+#   ribbon:
+#     listOfServers: localhost:8001/check-duplicate/
 
 spring:
   application:
     name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: CHECK-DUPLICATE-SERVICE
+          uri: lb://CHECK-DUPLICATE-SERVICE
+          predicates:
+            - Path=/check-duplicate/**
+      discovery:
+        locator:
+          enabled: true
   zipkin:
     base-url: http://localhost:9411
   sleuth:
     sampler:
       probability:  1.0
-  # cloud:
-  #   gateway:
-  #     routes:
-  #       - id: CHECK-DUPLICATE-SERVICE
-  #         uri: lb://CHECK-DUPLICATE-SERVICE
-  #         predicates:
-  #           - Path=/check-duplicate/**
-      # discovery:
-      #   locator:
-      #     enabled: true
       #     lowerCaseServiceId: true
       # httpclient:
       #   connect-timeout: 10000
       #   response-timeout: 7s
-
+  # zipkin:
+  #   base-url: http://localhost:9411
+  # sleuth:
+  #   sampler:
+  #     probability:  1.0
+  # main:
+  #   web-application-type: reactive
+  #   allow-bean-definition-overriding: true
+  
 server:
   port: 9000
 

@@ -1,0 +1,164 @@
+version: '3.6'
+
+services:
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+    container_name: zipkin
+    networks:
+      - elk
+  discovery:
+    image: discovery-service
+    build : ./discovery
+    container_name: discovery-service
+    environment:
+      - SPRING_ZIPKIN_BASEURL=http://zipkin:9411
+    ports:
+      - 9001:9001
+    networks:
+      - elk
+  check-duplicate:
+    image: check-duplicate-service
+    build : ./check-duplicate
+    container_name: check-duplicate-service
+    depends_on:
+      - discovery
+      # - db
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery:9001/eureka
+      # - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      # - SPRING_DATASOURCE_USERNAME=postgres
+      # - SPRING_DATASOURCE_PASSWORD=p@stgres
+      # - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_ZIPKIN_BASEURL=http://zipkin:9411
+    ports:
+      - 8085:8085
+    networks:
+      - elk
+  gateway:
+    image: gateway-service
+    build : ./gateway
+    container_name: gateway-service
+    depends_on:
+      - discovery
+      - check-duplicate
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery:9001/eureka
+      - SPRING_CLOUD_GATEWAY_ROUTES[0]_URI=http://check-duplicate:8085
+      - SPRING_CLOUD_GATEWAY_ROUTES[0]_ID=check-duplicate-service
+      - SPRING_CLOUD_GATEWAY_ROUTES[0]_PREDICATES[0]=Path=/check-duplicate/*
+      - SPRING_ZIPKIN_BASEURL=http://zipkin:9411
+    ports:
+      - 9000:9000
+    networks:
+      - elk
+  # db:
+  #   image: postgres:10.4
+  #   container_name: db
+  #   volumes:
+  #         - /var/db/data/postgresql:/var/lib/postgresql
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=p@stgres
+  #   ports:
+  #     - 5432:5432
+  setup:
+    profiles:
+      - setup-elk
+    build:
+      context: elk/setup/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    init: true
+    volumes:
+      - ./elk/setup/entrypoint.sh:/entrypoint.sh:ro,Z
+      - ./elk/setup/lib.sh:/lib.sh:ro,Z
+      - ./elk/setup/roles:/roles:ro,Z
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+      METRICBEAT_INTERNAL_PASSWORD: ${METRICBEAT_INTERNAL_PASSWORD:-}
+      FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD:-}
+      HEARTBEAT_INTERNAL_PASSWORD: ${HEARTBEAT_INTERNAL_PASSWORD:-}
+      MONITORING_INTERNAL_PASSWORD: ${MONITORING_INTERNAL_PASSWORD:-}
+      BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD:-}
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  elasticsearch:
+    container_name: elasticsearch
+    build:
+      context: elk/elasticsearch/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    volumes:
+      - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,Z
+      - elasticsearch:/usr/share/elasticsearch/data:Z
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      node.name: elasticsearch
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      # Bootstrap password.
+      # Used to initialize the keystore during the initial startup of
+      # Elasticsearch. Ignored on subsequent runs.
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
+      # Use single node discovery in order to disable production mode and avoid bootstrap checks.
+      # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+      discovery.type: single-node
+    networks:
+      - elk
+    restart: unless-stopped
+
+  logstash:
+    container_name: logstash
+    build:
+      context: elk/logstash/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    volumes:
+      - ./elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
+      - ./elk/logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+    ports:
+      - 5044:5044
+      - 50000:50000/tcp
+      - 50000:50000/udp
+      - 9600:9600
+    environment:
+      LS_JAVA_OPTS: -Xms256m -Xmx256m
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+
+  kibana:
+    container_name: kibana
+    build:
+      context: elk/kibana/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    volumes:
+      - ./elk/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
+    ports:
+      - 5601:5601
+    environment:
+      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+
+networks:
+  elk:
+    driver: bridge
+
+volumes:
+  elasticsearch:

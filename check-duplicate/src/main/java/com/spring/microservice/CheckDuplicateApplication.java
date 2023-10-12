@@ -5,9 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.client.RestTemplate;
@@ -15,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @EnableEurekaClient
 @SpringBootApplication
-public class CheckDuplicateApplication extends SpringBootServletInitializer{
+public class CheckDuplicateApplication {
 
 
     public static void main(String[] args) {
@@ -27,10 +24,5 @@ public class CheckDuplicateApplication extends SpringBootServletInitializer{
     RestTemplate restTemplate(){
         return new RestTemplate();
     }
-
-    @Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(CheckDuplicateApplication.class);
-	}
 
 }

@@ -12,11 +12,8 @@
     <description>Demo of Microservices with Spring Boot + Spring Cloud</description>
 
     <modules>
-        <module>svc-employee</module>
-        <module>svc-department</module>
-        <module>svc-organization</module>
+        <module>check-duplicate</module>
         <module>discovery</module>
-        <module>config</module>
         <module>gateway</module>
     </modules>
 
