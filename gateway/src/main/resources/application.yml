@@ -4,33 +4,15 @@ management:
       exposure:
         include: '*'
 
-      
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:9001/eureka
-      # defaultZone: http://10.61.2.14:8080/eureka
     fetchRegistry: true
     registerWithEureka: true
   instance:
     appname: API-GATEWAY
     preferIpAddress: true
-
-# zuul:
-#   routes:
-#    check-duplicate-service:
-#      path: /check-duplicate/**
-#      stripPrefix: false
-
-# ribbon:
-#   eureka:
-#     enabled: false
-#   ReadTimeout: 60000
-#   ConnectTimeout: 10000
-
-# check-duplicate-service:
-#   ribbon:
-#     listOfServers: localhost:8001/check-duplicate/
 
 spring:
   application:
@@ -50,19 +32,7 @@ spring:
   sleuth:
     sampler:
       probability:  1.0
-      #     lowerCaseServiceId: true
-      # httpclient:
-      #   connect-timeout: 10000
-      #   response-timeout: 7s
-  # zipkin:
-  #   base-url: http://localhost:9411
-  # sleuth:
-  #   sampler:
-  #     probability:  1.0
-  # main:
-  #   web-application-type: reactive
-  #   allow-bean-definition-overriding: true
-  
+
 server:
   port: 9000
 
